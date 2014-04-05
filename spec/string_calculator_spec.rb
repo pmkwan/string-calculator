@@ -24,6 +24,16 @@ describe StringCalculator do
         expect(subject.add("10,20,30,40,50,60")).to eq(210)
       end
     end
+
+    context "when input string has new lines between numbers" do
+      it "handles new lines between numbers" do
+        expect(subject.add("2\n2")).to eq(4)
+      end
+
+      it "handles new lines and commas between numbers" do
+        expect(subject.add("1\n2\n3,4,5\n6")).to eq(21)
+      end
+    end
   end
 
 end

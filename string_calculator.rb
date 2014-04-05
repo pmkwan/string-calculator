@@ -1,11 +1,15 @@
 class StringCalculator
 
+  DELIMITER = ','.freeze
+
   def add(input_string)
-    return 0 if input_string.empty?
+    @numbers = input_string.gsub("\n", DELIMITER)
 
-    return input_string.to_i unless input_string.include?(',')
+    return 0 if @numbers.empty?
 
-    input_string.split(',').map(&:to_i).inject(:+)
+    return @numbers.to_i unless @numbers.include?(',')
+
+    @numbers.split(',').map(&:to_i).inject(:+)
   end
 
 end
