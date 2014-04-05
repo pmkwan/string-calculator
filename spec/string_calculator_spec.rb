@@ -34,6 +34,16 @@ describe StringCalculator do
         expect(subject.add("1\n2\n3,4,5\n6")).to eq(21)
       end
     end
+
+    context "handles some other delimiters" do
+      it "can use ; as the delimiter" do
+        expect(subject.add("//;\n1;2")).to eq(3)
+      end
+
+      it "can use | as the delimiter" do
+        expect(subject.add("//|\n1|2")).to eq(3)
+      end
+    end
   end
 
 end

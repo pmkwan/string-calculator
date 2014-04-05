@@ -1,15 +1,19 @@
 class StringCalculator
 
-  DELIMITER = ','.freeze
+  COMMA_DELIMITER = ','.freeze
 
   def add(input_string)
-    @numbers = input_string.gsub("\n", DELIMITER)
+    return 0 if input_string.empty?
 
-    return 0 if @numbers.empty?
+    delimiter = find_delimiter(input_string)
 
-    return @numbers.to_i unless @numbers.include?(',')
+    input_string.gsub("\n", delimiter).split(delimiter).map(&:to_i).inject(:+)
+  end
 
-    @numbers.split(',').map(&:to_i).inject(:+)
+  private
+
+  def find_delimiter(input_string)
+    input_string[0..1] == "//" ? input_string[2] : COMMA_DELIMITER
   end
 
 end
