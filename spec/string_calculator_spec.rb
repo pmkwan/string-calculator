@@ -44,6 +44,13 @@ describe StringCalculator do
         expect(subject.add("//|\n1|2")).to eq(3)
       end
     end
+
+    context "when negative numbers are present" do
+      it "raises exception with message" do
+        expect{ subject.add("-2, -3")}.to raise_error(RuntimeError, "negatives not allowed: -2, -3")
+      end
+
+    end
   end
 
 end
