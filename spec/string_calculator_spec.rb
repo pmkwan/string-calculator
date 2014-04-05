@@ -18,6 +18,12 @@ describe StringCalculator do
         expect(subject.add("1,2")).to eq(3)
       end
     end
+
+    context "when input string has an unknown amount of numbers" do
+      it "adds up all the numbers correctly in the string" do
+        expect(subject.add("10,20,30,40,50,60")).to eq(210)
+      end
+    end
   end
 
 end
